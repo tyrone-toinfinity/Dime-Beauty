@@ -30,10 +30,10 @@ const Cart = (props) => {
       ))}
 
       <View>
-        <Text style={styles.total}>Amount: ${itemsPrice}</Text>
-        <Text style={styles.total}>Tax: ${taxPrice}</Text>
-        <Text style={styles.total}>Ship: ${shippingPrice}</Text>
-        <Text style={styles.totalAmount}>Total: ${totalPrice}</Text>
+        <Text style={styles.total}>Amount: ${itemsPrice.toFixed(2)}</Text>
+        <Text style={styles.total}>Tax: ${taxPrice.toFixed(2)}</Text>
+        <Text style={styles.total}>Ship: ${shippingPrice.toFixed(2)}</Text>
+        <Text style={styles.totalAmount}>Total: ${totalPrice.toFixed(2)}</Text>
       </View>
     </SafeAreaView>
   );
