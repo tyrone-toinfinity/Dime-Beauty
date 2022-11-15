@@ -22,41 +22,24 @@ const HomeScreen = ({ navigation }) => {
   // Data pulled from API
   let pullData = (products) => setData(products);
 
-  // data.map((el) => (el.qty = 0));
-  // useEffect(() => {
-  //   data.map((el) => (el.qty = 0));
-  // }, []);
-
   // Add products
   const onAddHandler = (product) => {
-    // product.map((el) => (el.qty = 0));
     const exist = cartItems.find((el) => el.id === product.id);
     if (!exist) {
       setCartItems((prevProduct) => {
         return [product, ...prevProduct];
       });
     } else {
-      console.log("doesnt make it");
+      console.log("only one item for now");
     }
   };
 
   // Remove products
   const onRemove = (product) => {
-    // const exist = cartItems.find((x) => x.id === product.id);
-    // if (exist.qty === 1) {
-    //   setCartItems(cartItems.filter((x) => x.id !== product.id));
-    // } else {
-    //   setCartItems(
-    //     cartItems.map((x) =>
-    //       x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
-    //     )
-    //   );
-    // }
     const exist = cartItems.find((x) => x.id === product.id);
-    if (exist.qty === 1) {
+    if (exist) {
       setCartItems(cartItems.filter((x) => x.id !== product.id));
     } else {
-      console.log("cant delete");
     }
   };
   return (
@@ -74,7 +57,7 @@ const HomeScreen = ({ navigation }) => {
               style={styles.button}
               onPress={() =>
                 navigation.navigate({
-                  name: "Shop",
+                  name: "",
                   params: { post: data },
                   merge: true,
                 })
@@ -97,7 +80,7 @@ const HomeScreen = ({ navigation }) => {
 
         <Cart onAdd={onAddHandler} onRemove={onRemove} cartItems={cartItems} />
         <Button
-          style={styles.button}
+          style={styles.clearBtn}
           mode="contained"
           onPress={() => setCartItems([])}
         >
@@ -131,6 +114,14 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     backgroundColor: "#222",
     width: "30%",
+  },
+  clearBtn: {
+    alignItems: "center",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 4,
+    backgroundColor: "#222",
+    width: "100%",
   },
   text: {
     fontSize: 14,
