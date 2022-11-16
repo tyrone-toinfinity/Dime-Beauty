@@ -21,7 +21,7 @@ const Cart = (props) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Button onPress={() => 2}>Add to Bundle</Button>
+      <Button onPress={() => console.log("not ready")}>Add to Bundle</Button>
       <Text style={styles.title}>Your Bag ({cartItems.length})</Text>
 
       {cartItems.length === 0 && (
