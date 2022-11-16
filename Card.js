@@ -1,7 +1,6 @@
 import * as React from "react";
 import { StyleSheet, Modal, View } from "react-native";
 import { Button, Card, Title, Paragraph } from "react-native-paper";
-import CartItems from "./CartItems";
 import { useState } from "react";
 
 const MyComponent = (props) => {

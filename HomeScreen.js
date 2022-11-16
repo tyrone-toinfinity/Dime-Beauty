@@ -20,6 +20,7 @@ const HomeScreen = ({ navigation }) => {
   const [cartItems, setCartItems] = useState([]);
 
   // Data pulled from API
+
   let pullData = (products) => setData(products);
 
   // Add products
@@ -27,10 +28,14 @@ const HomeScreen = ({ navigation }) => {
     const exist = cartItems.find((el) => el.id === product.id);
     if (!exist) {
       setCartItems((prevProduct) => {
+        product.qty = 1;
         return [product, ...prevProduct];
       });
     } else {
-      console.log("only one item for now");
+      setCartItems((prevProduct) => {
+        product.qty += 1;
+        return [...prevProduct];
+      });
     }
   };
 

@@ -1,12 +1,5 @@
 import * as React from "react";
-import {
-  Avatar,
-  Card,
-  IconButton,
-  Button,
-  Title,
-  Paragraph,
-} from "react-native-paper";
+import { Avatar, Card, Button, Title, Paragraph } from "react-native-paper";
 
 const CartCards = (props) => {
   let { product, onAdd, onRemove } = props;
@@ -21,6 +14,7 @@ const CartCards = (props) => {
         <Button onPress={() => onAdd(product)}>add more</Button>
         <Button onPress={() => onRemove(product)}>delete</Button>
       </Card.Actions>
+      <Paragraph>Qty: {product.qty}</Paragraph>
     </Card>
   );
 };

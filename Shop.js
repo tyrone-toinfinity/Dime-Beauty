@@ -1,14 +1,5 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  SafeAreaView,
-  ScrollView,
-} from "react-native";
+import { StyleSheet, View, SafeAreaView, ScrollView } from "react-native";
 import React, { useEffect, useState } from "react";
-import { StatusBar } from "expo-status-bar";
-import IndexServer from "./IndexServer";
 import Card from "./Card";
 
 const Shop = (props) => {

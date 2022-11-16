@@ -1,8 +1,5 @@
 import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import React from "react";
-import CartItems from "./CartItems";
-import Card from "./Card";
-import { Button } from "react-native-paper";
 import CartCards from "./CartCards";
 
 const Cart = (props) => {
@@ -10,10 +7,12 @@ const Cart = (props) => {
 
   let itemsPrice = 0;
 
-  cartItems.map((el) => (itemsPrice += parseInt(el.variants[0].price.amount)));
+  cartItems.map(
+    (el) => (itemsPrice += el.qty * parseInt(el.variants[0].price.amount))
+  );
 
   const taxPrice = itemsPrice * 0.14;
-  const shippingPrice = itemsPrice > 2000 ? 0 : 20;
+  const shippingPrice = itemsPrice > 100 ? 0 : 20;
   const totalPrice = itemsPrice + taxPrice + shippingPrice;
 
   return (
@@ -30,10 +29,18 @@ const Cart = (props) => {
       ))}
 
       <View>
-        <Text style={styles.total}>Amount: ${itemsPrice.toFixed(2)}</Text>
-        <Text style={styles.total}>Tax: ${taxPrice.toFixed(2)}</Text>
-        <Text style={styles.total}>Ship: ${shippingPrice.toFixed(2)}</Text>
-        <Text style={styles.totalAmount}>Total: ${totalPrice.toFixed(2)}</Text>
+        <Text style={styles.total}>
+          Amount: ${cartItems.length === 0 ? 0.0 : itemsPrice.toFixed(2)}
+        </Text>
+        <Text style={styles.total}>
+          Tax: ${cartItems.length === 0 ? 0.0 : taxPrice.toFixed(2)}
+        </Text>
+        <Text style={styles.total}>
+          Ship: ${cartItems.length === 0 ? 0.0 : shippingPrice.toFixed(2)}
+        </Text>
+        <Text style={styles.totalAmount}>
+          Total: ${cartItems.length === 0 ? 0.0 : totalPrice.toFixed(2)}
+        </Text>
       </View>
     </SafeAreaView>
   );
