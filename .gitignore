@@ -1,14 +1,28 @@
+# Ignore .env file
+.env
+
+# Ignore node_modules
 node_modules/
+
+# Ignore Expo directories
 .expo/
+
+# Ignore build output directories
 dist/
+web-build/
+
+# Ignore npm debug logs
 npm-debug.*
+
+# Ignore certificates and provisioning profiles
 *.jks
 *.p8
 *.p12
 *.key
 *.mobileprovision
-*.orig.*
-web-build/
 
-# macOS
+# Ignore backup files
+*.orig.*
+
+# Ignore macOS specific files
 .DS_Store
